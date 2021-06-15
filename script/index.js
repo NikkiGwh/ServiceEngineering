@@ -8,7 +8,7 @@ function Initialize() {
             const { latitude, longitude } = position.coords;
             let marker = [[longitude, latitude]];
             //TODO get n wikipedia articles which are cloesest
-            getWikipedia(100, marker);
+            getWikipedia(4, marker);
         });
     } else {
         console.log("geolocation is not supported");
@@ -28,14 +28,13 @@ function getMinMaxOf2dArray(arr, idx) {
 
 function getWikipedia(n, marker) {
     var url = "https://en.wikipedia.org/w/api.php";
-
     var params = {
         action: "query",
         list: "geosearch",
-        gscoord: "37.7891838|-122.4033522",
+        gscoord: marker[0][1] + "|" + marker[0][0],
         gsradius: "10000",
         gslimit: n.toString(),
-        prop: "coordinates",
+        prop: "coordinates|title",
         format: "json"
     };
 
@@ -50,6 +49,7 @@ function getWikipedia(n, marker) {
                 marker.push([pages[page].lon, pages[page].lat])
             }
             // Berechne Bounding Box, um das anzuzeigende Fenster einzustellen
+            console.log(marker);
             var longBounds = getMinMaxOf2dArray(marker, 0);
             var latBounds = getMinMaxOf2dArray(marker, 1);
             var bbox = [
