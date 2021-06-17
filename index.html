@@ -8,11 +8,37 @@
     <title>Was ist denn hier los?</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='bootstrap-5.0.1-dist\js\bootstrap.min.js'></script>
+    <link href='bootstrap-5.0.1-dist\css\bootstrap.min.css' rel='stylesheet' type="text/css" />
+    <link href='style\index.css' rel='stylesheet' type="text/css" />
+    <script src='script/index.js'></script>
+
 </head>
 
 <body>
-    <div id='map' style='width: 600px; height: 400px;'></div>
-    <script src='script/index.js'></script>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h1>Caption</h1>
+                <div id='map' style='width: 100%; height: 40vw;'></div>
+            </div>
+        </div>
+            <div class="row justify-content-end">
+                <div class="col-12 col-sm-8 col-md-4 ">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="number of article" aria-label="number of articles" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-primary" type="button">show article</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
 </body>
 
 </html>
