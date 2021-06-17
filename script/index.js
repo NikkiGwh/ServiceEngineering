@@ -1,4 +1,4 @@
-// TODO hier müssen die Koordinaten aus Wikipedia hin (Reihenfolge der Koordinaten beachten; hier: Longitude -> Latitude)
+const MAPBOX_KEY = 'pk.eyJ1Ijoic2VydmljZS1lbmdpbmVlcmluZzIxIiwiYSI6ImNrcHFvNTU5OTAwYzUycHBtd2liNGZ2enYifQ.uBbDX5hrbEbEGGMvabAPMw';
 
 
 //get user Postion, Wiki-article Positions, then call methods to build UI
@@ -9,6 +9,7 @@ function Initialize() {
             let marker = [[longitude, latitude]];
             //TODO get n wikipedia articles which are cloesest
             getWikipedia(4, marker);
+            updateAddress(longitude, latitude);
         });
     } else {
         console.log("geolocation is not supported");
@@ -58,8 +59,7 @@ function getWikipedia(n, marker) {
             ];
 
             // Initialisiere die Karte
-            mapboxgl.accessToken =
-                'pk.eyJ1Ijoic2VydmljZS1lbmdpbmVlcmluZzIxIiwiYSI6ImNrcHFvNTU5OTAwYzUycHBtd2liNGZ2enYifQ.uBbDX5hrbEbEGGMvabAPMw';
+            mapboxgl.accessToken = MAPBOX_KEY;
             var map = new mapboxgl.Map({
                 container: 'map',
                 style: 'mapbox://styles/mapbox/streets-v11',
@@ -81,6 +81,24 @@ function getWikipedia(n, marker) {
             });
         })
         .catch(function (error) { console.log(error); });
+}
+
+function updateAddress(longitude, latitude) {
+    var url = new URL(`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?`);
+    var params = {
+        access_token: MAPBOX_KEY,
+        language: "DE",
+        limit: 1,
+        types: "address",
+    };
+    url.search = new URLSearchParams(params);
+    fetch(url.toString())
+        .then(response => response.json())
+        .then(data => {
+            let address_full = data.features[0].place_name;
+            let address = address_full.substr(0, address_full.lastIndexOf(','));
+            document.getElementById('address-container').textContent = address;
+        });
 }
 
 Initialize();
