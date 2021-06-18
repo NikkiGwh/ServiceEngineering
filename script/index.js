@@ -9,11 +9,11 @@ function Initialize() {
       let marker = [[longitude, latitude]];
       //TODO get n wikipedia articles which are cloesest
       var x = document.getElementById("articleNum").value;
-      if(!isNaN(x) && document.getElementById("articleNum").value.length > 0){
+      if (!isNaN(x) && document.getElementById("articleNum").value.length > 0) {
         getWikipedia(x, marker);
-      }else{
+      } else {
         alert("Must input numbers");
-       getWikipedia(0,marker);
+        getWikipedia(0, marker);
       }
       updateAddress(longitude, latitude);
     });
@@ -42,7 +42,7 @@ function getMinMaxOf2dArray(arr, idx) {
 function getWikipedia(n, marker) {
   var url = new URL("https://de.wikipedia.org/w/api.php");
   var params = {
-    origin : "*",
+    origin: "*",
     action: "query",
     list: "geosearch",
     gscoord: marker[0][1] + "|" + marker[0][0],
@@ -58,7 +58,7 @@ function getWikipedia(n, marker) {
     })
     .then(function (response) {
       var pages = response.query.geosearch;
-      if(n > 0){
+      if (n > 0) {
         for (let i = 0; i < pages.length; i++) {
           const page = pages[i];
           marker.push([
@@ -69,7 +69,7 @@ function getWikipedia(n, marker) {
           ]);
         }
       }
-      
+
       // Berechne Bounding Box, um das anzuzeigende Fenster einzustellen
       console.log(marker);
       var longBounds = getMinMaxOf2dArray(marker, 0);
