@@ -8,7 +8,13 @@ function Initialize() {
       const { latitude, longitude } = position.coords;
       let marker = [[longitude, latitude]];
       //TODO get n wikipedia articles which are cloesest
-      getWikipedia(10, marker);
+      var x = document.getElementById("articleNum").value;
+      if(!isNaN(x) && document.getElementById("articleNum").value.length > 0){
+        getWikipedia(x, marker);
+      }else{
+        alert("Must input numbers");
+       getWikipedia(0,marker);
+      }
       updateAddress(longitude, latitude);
     });
   } else {
@@ -56,15 +62,19 @@ function getWikipedia(n, marker) {
       return response.json();
     })
     .then(function (response) {
+      
       var pages = response.query.pages;
-      for (var page in pages) {
-        marker.push([
-          pages[page].coordinates[0].lon,
-          pages[page].coordinates[0].lat,
-          pages[page].title,
-          pages[page].fullurl,
-        ]);
+      if(n > 0){
+        for (var page in pages) {
+          marker.push([
+            pages[page].coordinates[0].lon,
+            pages[page].coordinates[0].lat,
+            pages[page].title,
+            pages[page].fullurl,
+          ]);
+        }
       }
+      
       // Berechne Bounding Box, um das anzuzeigende Fenster einzustellen
       console.log(marker);
       var longBounds = getMinMaxOf2dArray(marker, 0);
