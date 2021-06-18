@@ -34,7 +34,7 @@ function getMinMaxOf2dArray(arr, idx) {
 }
 
 function getWikipedia(n, marker) {
-  var url = "https://en.wikipedia.org/w/api.php";
+  var url = "https://de.wikipedia.org/w/api.php";
   var params = {
     action: "query",
     generator: "geosearch",
