@@ -40,37 +40,32 @@ function getMinMaxOf2dArray(arr, idx) {
 }
 
 function getWikipedia(n, marker) {
-  var url = "https://de.wikipedia.org/w/api.php";
+  var url = new URL("https://de.wikipedia.org/w/api.php");
   var params = {
+    origin : "*",
     action: "query",
-    generator: "geosearch",
-    inprop: "url",
-    ggscoord: marker[0][1] + "|" + marker[0][0],
-    ggsradius: "10000",
-    ggslimit: n.toString(),
-    prop: "coordinates|title|info",
+    list: "geosearch",
+    gscoord: marker[0][1] + "|" + marker[0][0],
+    gsradius: "10000",
+    gslimit: n.toString(),
     format: "json",
   };
-
-  url = url + "?origin=*";
-  Object.keys(params).forEach(function (key) {
-    url += "&" + key + "=" + params[key];
-  });
+  url.search = new URLSearchParams(params);
 
   fetch(url)
     .then(function (response) {
       return response.json();
     })
     .then(function (response) {
-      
-      var pages = response.query.pages;
+      var pages = response.query.geosearch;
       if(n > 0){
-        for (var page in pages) {
+        for (let i = 0; i < pages.length; i++) {
+          const page = pages[i];
           marker.push([
-            pages[page].coordinates[0].lon,
-            pages[page].coordinates[0].lat,
-            pages[page].title,
-            pages[page].fullurl,
+            page.lon,
+            page.lat,
+            page.title,
+            page.pageid,
           ]);
         }
       }
@@ -118,7 +113,7 @@ function getWikipedia(n, marker) {
           .setLngLat(coordinates.slice(0, 2))
           .setPopup(
             new mapboxgl.Popup().setHTML(
-              `<a target="_blank" href="${coordinates[3]}">${coordinates[2]}</a>`
+              `<a target="_blank" href="https://de.wikipedia.org/?curid=${coordinates[3]}">${coordinates[2]}</a>`
             )
           )
           .addTo(map);
