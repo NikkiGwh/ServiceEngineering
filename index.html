@@ -12,21 +12,22 @@
     <link href='bootstrap-5.0.1-dist\css\bootstrap.min.css' rel='stylesheet' type="text/css" />
     <link href='style\index.css' rel='stylesheet' type="text/css" />
     <script src='script/index.js'></script>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
-                <h1>Caption</h1>
+            <div id="map-container" class="col">
+                <h1>Was ist denn hier los?!?</h1>
                 <div id='map'></div>
+                <div id="address-container">
+                    <div id="address"></div>
+                </div>
             </div>
         </div>
         <div class="row justify-content-end">
-            <div class="col">
-                <div id="address-container"></div>
-            </div>
             <div class="col-12 col-sm-8 col-md-4 ">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="number of article"

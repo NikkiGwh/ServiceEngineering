@@ -83,7 +83,7 @@ function getWikipedia(n, marker) {
         fitBoundsOptions: {
           padding: {
             top: 50,
-            bottom: 50,
+            bottom: 80,
             left: 50,
             right: 50,
           },
@@ -135,7 +135,7 @@ function updateAddress(longitude, latitude) {
     .then((data) => {
       let address_full = data.features[0].place_name;
       let address = address_full.substr(0, address_full.lastIndexOf(","));
-      document.getElementById("address-container").textContent = address;
+      document.getElementById("address").textContent = address;
     });
 }
 
