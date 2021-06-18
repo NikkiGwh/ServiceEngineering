@@ -40,7 +40,7 @@ function getMinMaxOf2dArray(arr, idx) {
 }
 
 function getWikipedia(n, marker) {
-  var url = "https://en.wikipedia.org/w/api.php";
+  var url = "https://de.wikipedia.org/w/api.php";
   var params = {
     action: "query",
     generator: "geosearch",
@@ -93,23 +93,22 @@ function getWikipedia(n, marker) {
         fitBoundsOptions: {
           padding: {
             top: 50,
-            bottom: 50,
+            bottom: 80,
             left: 50,
             right: 50,
           },
         },
       });
-      // Img-Tag für Marker der eigenen Position
-      const img = document.createElement("img");
-      img.src =
-        "https://upload.wikimedia.org/wikipedia/commons/2/2f/Map-circle-blue.svg";
-      img.style.height = "30px";
+      // Marker der eigenen Position
+      const location_marker = document.createElement("div");
+      location_marker.id = "standort-marker";
+      const location_marker_container = document.createElement("div");
+      location_marker_container.appendChild(location_marker);
       // Marker der eigenen Position erzeugen
       new mapboxgl.Marker({
-        element: img,
+        element: location_marker_container,
       })
         .setLngLat(marker.shift().slice(0, 2))
-        //.setPopup(new mapboxgl.Popup().setHTML("<div id=\"address-container\"></div>"))
         .setPopup(new mapboxgl.Popup().setHTML("<p>Eigene Position</p>"))
         .addTo(map);
 
@@ -146,7 +145,7 @@ function updateAddress(longitude, latitude) {
     .then((data) => {
       let address_full = data.features[0].place_name;
       let address = address_full.substr(0, address_full.lastIndexOf(","));
-      document.getElementById("address-container").textContent = address;
+      document.getElementById("address").textContent = address;
     });
 }
 
