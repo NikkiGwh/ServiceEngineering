@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Was ist denn hier los?</title>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style/index.css" />
-  </head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='bootstrap-5.0.1-dist\js\bootstrap.min.js'></script>
+    <link href='bootstrap-5.0.1-dist\css\bootstrap.min.css' rel='stylesheet' type="text/css" />
+    <link href='style\index.css' rel='stylesheet' type="text/css" />
+    <script src='script/index.js'></script>
 
-  <body>
-    <div id="map"></div>
-    <script src="script/index.js"></script>
-    <div id="address-container"></div>
-  </body>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h1>Caption</h1>
+                <div id='map'></div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col">
+                <div id="address-container"></div>
+            </div>
+            <div class="col-12 col-sm-8 col-md-4 ">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="number of article"
+                        aria-label="number of articles" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="button">show article</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</body>
+
 </html>

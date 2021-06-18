@@ -5,6 +5,10 @@
 }
 
 #map {
-    width: 97vw; 
-    height: 97vh;
+    width: 100%; 
+    height: 60vh;
+}
+.mydiv{
+    border-style: solid;
+    border-color: black;
 }
