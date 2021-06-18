@@ -89,17 +89,16 @@ function getWikipedia(n, marker) {
           },
         },
       });
-      // Img-Tag für Marker der eigenen Position
-      const img = document.createElement("img");
-      img.src =
-        "https://upload.wikimedia.org/wikipedia/commons/2/2f/Map-circle-blue.svg";
-      img.style.height = "30px";
+      // Marker der eigenen Position
+      const location_marker = document.createElement("div");
+      location_marker.id = "standort-marker";
+      const location_marker_container = document.createElement("div");
+      location_marker_container.appendChild(location_marker);
       // Marker der eigenen Position erzeugen
       new mapboxgl.Marker({
-        element: img,
+        element: location_marker_container,
       })
         .setLngLat(marker.shift().slice(0, 2))
-        //.setPopup(new mapboxgl.Popup().setHTML("<div id=\"address-container\"></div>"))
         .setPopup(new mapboxgl.Popup().setHTML("<p>Eigene Position</p>"))
         .addTo(map);
 
