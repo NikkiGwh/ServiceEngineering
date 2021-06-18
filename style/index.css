@@ -1,4 +1,13 @@
-.mydiv{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#map {
+    width: 97vw; 
+    height: 97vh;
+}.mydiv{
     border-style: solid;
     border-color: black;
 }
