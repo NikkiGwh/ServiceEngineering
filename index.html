@@ -19,8 +19,12 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div id="map-container" class="col">
+            <div class="col">
                 <h1>Was ist denn hier los?!?</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div id="map-container" class="col nopadding">
                 <div id='map'></div>
                 <div id="address-container">
                     <div id="address"></div>
@@ -28,13 +32,12 @@
             </div>
         </div>
         <div class="row justify-content-end">
-            <div class="col-12 col-sm-8 col-md-4 ">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="number of article"
-                        aria-label="number of articles" aria-describedby="basic-addon2" id="articleNum" value="10">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button" onclick="Initialize()">show article</button>
-                    </div>
+            <div class="col-sm-6 justify-content-center align-self-center">
+                <div class="input-group justify-content-center align-self-center">
+                    <label for="articleNum" class="justify-content-center align-self-center">Artikel-Anzahl: </label>
+                    <input type="text" class="form-control justify-content-center align-self-center rounded" placeholder="Anzahl der Artikel"
+                    aria-label="number of articles" aria-describedby="basic-addon2" id="articleNum" value="10">
+                    <img onclick="Initialize()" id="refresh-icon" src="refresh-icon.svg">
                 </div>
             </div>
         </div>
