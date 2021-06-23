@@ -5,6 +5,21 @@
     font-family: 'Josefin Sans', sans-serif;
 }
 
+html, 
+body {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(
+        170deg
+        , #ffffff, #f6f6f6);
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
 h1 {
     text-align: center;
     font-weight: bold;
@@ -13,7 +28,7 @@ h1 {
 
 #map {
     width: 100%;
-    height: 60vh;
+    height: calc(97vh - 120px);
 }
 
 #map-container {
@@ -26,6 +41,7 @@ h1 {
     padding: 5px 20px;
     border-radius: 20px;
     box-shadow: 2px 4px rgba(0, 0, 0, .1);
+    margin: 10px;
 }
 
 #address-container {
@@ -35,6 +51,17 @@ h1 {
     width: 100%;
 }
 
+#refresh-icon {
+    width: 50px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#articleNum {
+    margin: 5px;
+    height: 100%;
+    width: 20vw;
+}
 
 #standort-marker {
     position: absolute;
